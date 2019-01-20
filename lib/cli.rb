@@ -33,7 +33,7 @@ module CLI
   def rover_position_explanation
     puts_fast "Now it's time to deploy a rover or two..."
     puts_fast "You must decide on the starting position of a rover"
-    puts_fast "For example, 0, 0, N, will place the rover in the bottom left cell, facing North."
+    puts_fast "For example, 0 0 N, will place the rover in the bottom left cell, facing North."
   end
 
   def get_x_coord
@@ -73,6 +73,6 @@ module CLI
 
   def eventual_position
     puts_fast "Eventual position of rover(s):"
-  end 
+  end
 
 end

@@ -39,6 +39,7 @@ class Plateau
       @grid[@grid.length - 1 - rover.position[1].to_i] = new_row
       index += 1
     end
+      print rovers.map { |r| r.position }
       display_grid
   end
 end

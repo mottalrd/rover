@@ -33,14 +33,14 @@ class CLI
     starting_x_coord = PROMPT.ask("Provide the starting X coordinate, which must be between 0-#{@initialized_plateau.x_coord}") { |q| q.in("0-#{@initialized_plateau.x_coord}") }
     starting_y_coord = PROMPT.ask("And the Y coordinate, which must be between 0-#{@initialized_plateau.y_coord}") { |q| q.in("0-#{@initialized_plateau.y_coord}") }
     direction = PROMPT.select("Which direction is it facing: North, East, South or West?", %w(N E S W))
-    position = [starting_x_coord, starting_y_coord, direction]
+    # position = [starting_x_coord, starting_y_coord, direction]
     puts_fast "Now you must instruct the rover by typing in a sequence of the following commands: L, R and M."
     puts_fast "L: Rotate 90 degrees left."
     puts_fast "R: Rotate 90 degrees right."
     puts_fast "M: Move forward one grid point."
-    instructions = gets.chomp.capitalize
+    instructions = gets.chomp.upcase
     # TODO: validate that instructions only contain L R M characters
-    Rover.new(position, instructions)
+    Rover.new(starting_x_coord, starting_y_coord, direction, instructions)
     choice = PROMPT.select("Congratulations, your first rover has been deployed. Would you like to deploy another?", %w(Yes No))
     case choice
     when "Yes"
@@ -54,10 +54,10 @@ class CLI
     starting_x_coord = PROMPT.ask("Provide the starting X coordinate, which must be between 0-#{@initialized_plateau.x_coord}") { |q| q.in("0-#{@initialized_plateau.x_coord}") }
     starting_y_coord = PROMPT.ask("And the Y coordinate, which must be between 0-#{@initialized_plateau.y_coord}") { |q| q.in("0-#{@initialized_plateau.y_coord}") }
     direction = PROMPT.select("Which direction is it facing: North, East, South or West?", %w(N E S W))
-    position = [starting_x_coord, starting_y_coord, direction]
+    # position = [starting_x_coord, starting_y_coord, direction]
     puts_fast "Instruct the rover with the following commands: L, R and M."
     instructions = gets.chomp.upcase
-    Rover.new(position, instructions)
+    Rover.new(starting_x_coord, starting_y_coord, direction, instructions)
     choice = PROMPT.select("Your rover has been deployed. Would you like to deploy another?", %w(Yes No))
     case choice
     when "Yes"
@@ -73,9 +73,12 @@ class CLI
     @initialized_plateau.display_rovers_on_grid
 
     # TODO: run instructions/commands to change location of rovers
+    rovers = Rover.all
+    rovers.each { |r| r.execute_command }
 
     # TODO: display rovers on the plateau after moving
     puts "Eventual position of rover(s):"
+    @initialized_plateau.display_rovers_on_grid
   end
 
 end

@@ -33,13 +33,13 @@ class Plateau
       rover = rovers[index]
       new_row = @row.clone
       # inserting rover into the correct x coordinate
-      new_row[rover.position[0].to_i] = 'R'
+      new_row[rover.x.to_i] = 'R'
       # finding the correct row based on new y coordinate to replace with the cloned row containing rover's new x coordinate
       # need to find index in reverse as display_grid method.....
-      @grid[@grid.length - 1 - rover.position[1].to_i] = new_row
+      @grid[@grid.length - 1 - rover.y.to_i] = new_row
       index += 1
     end
-      print rovers.map { |r| r.position }
+      rovers.each { |r| puts "#{r.x} #{r.y} #{r.direction}" }
       display_grid
   end
 end

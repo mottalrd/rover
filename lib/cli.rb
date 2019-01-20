@@ -30,7 +30,7 @@ class CLI
     puts_fast "Now it's time to deploy a rover or two..."
     puts_fast "You must decide on the starting position of a rover"
     puts_fast "For example, 0, 0, N, will place the rover in the bottom left cell, facing North."
-    starting_x_coord = PROMPT.ask("Provide starting X coordinate, which must be between 0-#{@initialized_plateau.x_coord}") { |q| q.in("0-#{@initialized_plateau.x_coord}") }
+    starting_x_coord = PROMPT.ask("Provide the starting X coordinate, which must be between 0-#{@initialized_plateau.x_coord}") { |q| q.in("0-#{@initialized_plateau.x_coord}") }
     starting_y_coord = PROMPT.ask("And the Y coordinate, which must be between 0-#{@initialized_plateau.y_coord}") { |q| q.in("0-#{@initialized_plateau.y_coord}") }
     direction = PROMPT.select("Which direction is it facing: North, East, South or West?", %w(N E S W))
     position = [starting_x_coord, starting_y_coord, direction]
@@ -41,18 +41,39 @@ class CLI
     instructions = gets.chomp.capitalize
     # TODO: validate that instructions only contain L R M characters
     Rover.new(position, instructions)
-    puts Rover.all
     choice = PROMPT.select("Congratulations, your first rover has been deployed. Would you like to deploy another?", %w(Yes No))
     case choice
     when "Yes"
-      # deploy another rover
+      deploy_more_rovers
     when "No"
-      # run rover instructions
+      run_instructions
     end
   end
 
   def deploy_more_rovers
+    starting_x_coord = PROMPT.ask("Provide the starting X coordinate, which must be between 0-#{@initialized_plateau.x_coord}") { |q| q.in("0-#{@initialized_plateau.x_coord}") }
+    starting_y_coord = PROMPT.ask("And the Y coordinate, which must be between 0-#{@initialized_plateau.y_coord}") { |q| q.in("0-#{@initialized_plateau.y_coord}") }
+    direction = PROMPT.select("Which direction is it facing: North, East, South or West?", %w(N E S W))
+    position = [starting_x_coord, starting_y_coord, direction]
+    puts_fast "Instruct the rover with the following commands: L, R and M."
+    instructions = gets.chomp.upcase
+    Rover.new(position, instructions)
+    puts Rover.all
+    choice = PROMPT.select("Your rover has been deployed. Would you like to deploy another?", %w(Yes No))
+    case choice
+    when "Yes"
+      deploy_more_rovers
+    when "No"
+      run_instructions
+    end
+  end
 
-  end 
+  def run_instructions
+    # display rovers on the plateau before moving
+    puts "Initial position of rover(s):"
+    @initialized_plateau.display_rovers_on_grid
+    # TODO: display rovers on the plateau after moving
+    puts "Eventual position of rover(s):"
+  end
 
 end

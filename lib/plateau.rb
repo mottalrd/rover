@@ -35,7 +35,6 @@ class Plateau
       # inserting rover into the correct x coordinate
       new_row[rover.x.to_i] = 'R'
       # finding the correct row based on new y coordinate to replace with the cloned row containing rover's new x coordinate
-      # need to find index in reverse as display_grid method.....
       @grid[@grid.length - 1 - rover.y.to_i] = new_row
       index += 1
     end

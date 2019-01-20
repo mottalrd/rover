@@ -1,7 +1,7 @@
 require_relative '../config/environment'
 
-cli = CLI.new
+mission = MissionControl.new
 
 system("clear")
 
-cli.welcome
+mission.begin

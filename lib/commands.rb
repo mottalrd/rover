@@ -1,4 +1,4 @@
-class Commands
+module Commands
 
   def rotate(direction, desired_rotation)
     case direction

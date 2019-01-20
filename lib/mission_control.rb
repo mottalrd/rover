@@ -76,6 +76,7 @@ class MissionControl
 
     # displays rovers on the plateau after moving
     eventual_position
+    @initialized_plateau.create_grid  # to clear the pre-existing grid 
     @initialized_plateau.display_rovers_on_grid
   end
 

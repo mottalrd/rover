@@ -46,7 +46,7 @@ class CLI
     when "Yes"
       deploy_more_rovers
     when "No"
-      run_instructions
+      trigger_action
     end
   end
 
@@ -58,20 +58,22 @@ class CLI
     puts_fast "Instruct the rover with the following commands: L, R and M."
     instructions = gets.chomp.upcase
     Rover.new(position, instructions)
-    puts Rover.all
     choice = PROMPT.select("Your rover has been deployed. Would you like to deploy another?", %w(Yes No))
     case choice
     when "Yes"
       deploy_more_rovers
     when "No"
-      run_instructions
+      trigger_action
     end
   end
 
-  def run_instructions
+  def trigger_action
     # display rovers on the plateau before moving
     puts "Initial position of rover(s):"
     @initialized_plateau.display_rovers_on_grid
+
+    # TODO: run instructions/commands to change location of rovers
+
     # TODO: display rovers on the plateau after moving
     puts "Eventual position of rover(s):"
   end

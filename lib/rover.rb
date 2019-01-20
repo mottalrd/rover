@@ -1,7 +1,7 @@
 
 class Rover
 
-  # attr_accessor :position, :direction
+  attr_reader :position, :instructions
 
   @@rovers = []
 

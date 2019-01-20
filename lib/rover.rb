@@ -28,10 +28,10 @@ class Rover
         @x += returned_coords[0]
         @y += returned_coords[1]
       when "L"
-        returned_direction = rotate(@direction, "L")
+        returned_direction = rotate(@direction, - 1)
         @direction = returned_direction
       when "R"
-        returned_direction = rotate(@direction, "R")
+        returned_direction = rotate(@direction, + 1)
         @direction = returned_direction
       end
     end

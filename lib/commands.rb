@@ -1,19 +1,24 @@
 module Commands
 
-  def rotate(direction, desired_rotation)
+  def rotate(direction, rotation)
     cardinals = ["N", "E", "S", "W"]
-    case desired_rotation
-    when "L"
-      cardinals[cardinals.index(direction) - 1]
-    when "R"
-      if direction == "W"
-        # account for west being the last index so needs to loop back to index 0
-        cardinals[0]
-      else
-        cardinals[cardinals.index(direction) + 1]
-      end
-    end
-  end
+    cardinals[cardinals.index(direction) + rotation] || cardinals[0]
+  end 
+
+  # def rotate(direction, desired_rotation)
+  #   cardinals = ["N", "E", "S", "W"]
+  #   case desired_rotation
+  #   when "L"
+  #     cardinals[cardinals.index(direction) - 1]
+  #   when "R"
+  #     if direction == "W"
+  #       # account for west being the last index so needs to loop back to index 0
+  #       cardinals[0]
+  #     else
+  #       cardinals[cardinals.index(direction) + 1]
+  #     end
+  #   end
+  # end
 
   # def rotate(direction, desired_rotation)
   #   case direction

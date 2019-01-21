@@ -16,6 +16,7 @@ class Plateau
     number_of_items = @x_coord
     @row.fill("-", 0..number_of_items)
     number_of_rows.times{ @grid << @row }
+    @grid
   end
 
   def display_grid

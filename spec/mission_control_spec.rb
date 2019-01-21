@@ -1,3 +1,4 @@
+require 'tty/prompt'
 require 'mission_control.rb'
 
 describe MissionControl do

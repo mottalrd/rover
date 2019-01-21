@@ -11,10 +11,9 @@ class MissionControl
     choice = explore_mars_question
     case choice
     when "Yes"
-      specify_x_coord
-      x_coord = gets.chomp
-      specify_y_coord
-      y_coord = gets.chomp
+      coordinates
+      x_coord = specify_x_coord
+      y_coord = specify_y_coord
       divide_plateau
       @initialized_plateau = Plateau.new(x_coord, y_coord)
       @initialized_plateau.create_grid
@@ -24,6 +23,12 @@ class MissionControl
       goodbye
     end
   end
+
+
+  # def validate_coordinate_input(input)
+  #   # returns true if x_coord is greater than 1 and a string containing only digits
+  #   !!x_coord.to_i > 1 && !!x_coord.scan(/\D/).empty?
+  # end
 
   def get_input1
     rover_position_explanation
@@ -76,7 +81,7 @@ class MissionControl
 
     # displays rovers on the plateau after moving
     eventual_position
-    @initialized_plateau.create_grid  # to clear the pre-existing grid 
+    @initialized_plateau.create_grid  # to clear the pre-existing grid
     @initialized_plateau.display_rovers_on_grid
   end
 

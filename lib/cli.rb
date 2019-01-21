@@ -12,14 +12,27 @@ module CLI
     PROMPT.select("Would you like to help us explore Mars?", %w(Yes No))
   end
 
-  def specify_x_coord
+  def coordinates
     puts_fast "Excellent choice."
     puts_fast "The bottom-left coordinates of the Mars plateau are assumed to be 0,0."
-    puts_fast "Please specify the top-right X coordinate."
   end
 
+  def specify_x_coord
+    PROMPT.ask("Specify the top-right X coordinate.") do |q|
+      q.required true
+      q.validate(/^[1-9]*$/, 'Must be a number greater than 0')
+    end
+  end
+
+  # def input_must_be_number
+  #   puts "Please enter a number greater than 0"
+  # end
+
   def specify_y_coord
-    puts_fast "And now the top-right Y coordinate."
+    PROMPT.ask("Specify the top-right Y coordinate.") do |q|
+      q.required true
+      q.validate(/^[1-9]*$/, 'Must be a number greater than 0')
+    end
   end
 
   def divide_plateau

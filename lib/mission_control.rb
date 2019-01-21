@@ -18,33 +18,23 @@ class MissionControl
       @initialized_plateau = Plateau.new(x_coord, y_coord)
       @initialized_plateau.create_grid
       @initialized_plateau.display_grid
-      get_input1
+      get_input
     when "No"
       goodbye
     end
   end
-
 
   # def validate_coordinate_input(input)
   #   # returns true if x_coord is greater than 1 and a string containing only digits
   #   !!x_coord.to_i > 1 && !!x_coord.scan(/\D/).empty?
   # end
 
-  def get_input1
+  def get_input
     rover_position_explanation
     @starting_x_coord = get_x_coord
     @starting_y_coord = get_y_coord
     @direction = get_direction
     sequence_explanation
-    @instructions = gets.chomp.upcase
-    validate_instructions
-  end
-
-  def get_input2
-    @starting_x_coord = get_x_coord
-    @starting_y_coord = get_y_coord
-    @direction = get_direction
-    sequence_reminder
     @instructions = gets.chomp.upcase
     validate_instructions
   end
@@ -64,7 +54,7 @@ class MissionControl
     choice = deploy_another_rover_question
     case choice
     when "Yes"
-      get_input2
+      get_input
     when "No"
       trigger_action
     end

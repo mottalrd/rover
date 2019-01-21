@@ -44,7 +44,6 @@ module CLI
   end
 
   def rover_position_explanation
-    puts_fast "Now it's time to deploy a rover or two..."
     puts_fast "You must decide on the starting position of a rover"
     puts_fast "For example, 0 0 N, will place the rover in the bottom left cell, facing North."
   end
@@ -62,14 +61,10 @@ module CLI
   end
 
   def sequence_explanation
-    puts_fast "Now you must instruct the rover by typing in a sequence of the following commands: L, R and M."
-    puts_fast "L: Rotate 90 degrees left."
-    puts_fast "R: Rotate 90 degrees right."
-    puts_fast "M: Move forward one grid point."
-  end
-
-  def sequence_reminder
     puts_fast "Instruct the rover with the following commands: L, R and M."
+    puts "L: Rotate 90 degrees left."
+    puts "R: Rotate 90 degrees right."
+    puts "M: Move forward one grid point."
   end
 
   def sequence_try_again

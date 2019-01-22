@@ -2,13 +2,13 @@
 
 ## Language
 
-Initially, I was given permission to attempt this challenge in Javascript as it is the language I have been using most recently and am most confident using. However, after some deep consideration, I have decided to complete the challenge in Ruby instead as I believe it is more suited to the object-oriented aspect of this task.
+Initially, I was given permission to attempt this challenge in Javascript as it is the language I have been using most recently and am most confident using. However, after some consideration, I have decided to complete the challenge in Ruby instead as I believe it is more suited to the object-oriented aspect of this task.
 
 In keeping with OO principles, I have created various classes and modules with a single responsibility.
 
 * Cli: a module to take care of the command line interface.
 * Commands: a module containing two types of navigation methods.
-* MissionControl: a class to ....
+* MissionControl: a class to trigger mission events.
 * Plateau: a class that can create and display itself in a grid format.
 * Rover: a class that keeps track of all rovers and their behaviour.
 * Styling: a module containing styling methods.
@@ -17,7 +17,7 @@ In keeping with OO principles, I have created various classes and modules with a
 
 As there was no mention of creating specific UI for the web or elsewhere, I have decided to keep it simple and create a command line application.
 
-In order to make it more engaging, I have brought an interactive element to the 'game' by:
+In order to make it more engaging, I have brought an interactive element to the application by:
 
   1. Creating basic dialogue between NASA and the user.
   2. Prompting the user for their input to customise the size of the plateau, the position of the rovers, etc..

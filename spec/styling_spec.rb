@@ -13,5 +13,4 @@ describe Styling do
     end
   end
 
-
 end

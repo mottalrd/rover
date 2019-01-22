@@ -24,10 +24,6 @@ module CLI
     end
   end
 
-  # def input_must_be_number
-  #   puts "Please enter a number greater than 0"
-  # end
-
   def specify_y_coord
     PROMPT.ask("Specify the top-right Y coordinate.") do |q|
       q.required true

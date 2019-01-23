@@ -24,17 +24,24 @@ class Rover
       @instructions.split("").each do |command|
       case command
       when "M"
-        returned_coords = move_forward(@direction)
-        @x += returned_coords[0]
-        @y += returned_coords[1]
+        move_rover
       when "L"
-        returned_direction = rotate(@direction, - 1)
-        @direction = returned_direction
+        rotate_rover(-1)
       when "R"
-        returned_direction = rotate(@direction, + 1)
-        @direction = returned_direction
+        rotate_rover(+1)
       end
     end
+  end
+
+  def move_rover
+    returned_coords = move_forward(@direction)
+    @x += returned_coords[0]
+    @y += returned_coords[1]
+  end
+
+  def rotate_rover(index)
+    returned_direction = rotate(@direction, index)
+    @direction = returned_direction
   end
 
 end

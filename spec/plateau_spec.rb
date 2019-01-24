@@ -3,44 +3,39 @@ require "plateau.rb"
 describe Plateau do
 
   let(:plateau) { Plateau.new("5", "5") }
+  let(:grid) { [["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"]] }
 
   describe "#initialize" do
-    context "with parameters" do
-      it "should use specified values" do
-        expect(plateau.x_coord).to eq 5
-        expect(plateau.y_coord).to eq 5
-      end
+    it "should use specified values" do
+      expect(plateau.x_coord).to eq 5
+      expect(plateau.y_coord).to eq 5
     end
   end
 
   describe "#create_grid" do
-    it "should create an array" do
-      expect(plateau.create_grid).to be_an_instance_of(Array)
-    end
-    # it "should create the correct number of empty arrays to represent each of the grid's rows" do
-    #   expect(plateau.grid.length).to be(plateau.y_coord + 1)
-    # end
-    # it "should fill each empty array (row) with the correct number of empty strings to represent each of the grid's cells" do
-    #   expect(plateau.row.length).to be (plateau.x_coord + 1)
-    # end
     it "should return the correct board" do
-      expect(plateau.create_grid).to eq [["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"],["-","-","-","-","-","-"]]
+      expect(plateau.create_grid).to eq grid
     end
   end
 
   describe "#display_grid" do
     it "should display the grid in the console" do
-      expect(plateau.display_grid).to eq "|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|"
+      plateau.create_grid
+
+      # the {} is used after expect instead of () because it...
+      # substitutes real ruby output "file" with a fake one that collects all the thing you put into it
+      # then it runs the code and puts everything back to normal afterwards
+      # to_stdout stands for standard output
+
+      expect{ plateau.display_grid }.to output("|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n").to_stdout
     end
   end
 
   describe "#display_rovers_on_grid" do
     it "should display the rovers in the correct cell on the grid" do
-      # based on let(:rover) { Rover.new("1", "2", "N", "LMLMLMLMM")
-      # before instructions
-      expect(plateau.display_rovers_on_grid).to eq "|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|R|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|"
-      # after instructions
-      expect(plateau.display_rovers_on_grid).to eq "|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|R|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|"
+      rovers = [Rover.new("1", "2", "N", "LMLMLMLMM"), Rover.new("3", "3", "E", "MMRMMRMRRM")]
+      plateau.create_grid
+      expect{ plateau.display_rovers_on_grid }.to output("1 2 N\n3 3 E\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|R|-|-|\n|-|R|-|-|-|-|\n|-|-|-|-|-|-|\n|-|-|-|-|-|-|\n").to_stdout
     end
   end
 

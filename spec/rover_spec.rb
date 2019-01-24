@@ -7,6 +7,15 @@ describe Rover do
   let(:rover2) { Rover.new("3", "3", "E", "MMRMMRMRRM") }
   let(:rovers) { Rover.all }
 
+  # Remove all @@rovers before each test because class variables stick around
+  before do
+    rovers.clear
+  end
+
+  after do
+
+  end
+
   describe "#initialize" do
       it "should use specified values on initialization" do
         expect(rover1.x).to eq 1
@@ -25,22 +34,28 @@ describe Rover do
   end
 
   describe "#execute_command" do
-    it "should iterate through the rover's instructions and execute them consecutively" do
-      expect()
-    end
+    # instructions = "LMLMLMLMM"
+    # command_outcomes = {'M': 'move_rover', 'L': rotate_rover(-1), 'R': 'rotate_rover(+1)'}
+    # command_outcomes.each do |val, expected|
     context "when command is M" do
+      let(:rover1) { Rover.new("1", "2", "N", "M") }
+
       it "should call the move_rover method" do
-        expect()
+        rover1.execute_command
+
+        expect(rover1.x).to eq(1)
+        expect(rover1.y).to eq(3)
+        expect(rover1.direction).to eq("N")
       end
     end
     context "when command is L" do
       it "should call the rotate_rover method with an index of -1" do
-        expect()
+        expect(rover1).to receive(:rotate_rover).with(-1)
       end
     end
     context "when command is R" do
       it "should call the rotate_rover method with an index of +1" do
-        expect()
+        expect(rover1).to receive(:rotate_rover).with(+1)
       end
     end
   end

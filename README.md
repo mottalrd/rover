@@ -59,18 +59,6 @@ This challenge has been the first time I have been faced with the task of writin
 
 I have decided to use RSpec as my chosen testing tool. The specs can be run by typing ```rspec``` into the command line in the ```rover``` folder.
 
-As you can see, many of these tests fail although, I believe, the program I have built is working as it should. I struggled to understand how best to write tests when they include instance variables from the same or another class, for example.
-
-I have not been able to fully get to grips with the art of writing tests in the time given. However, I do think I now understand what sorts of things I should be testing. Hence, where I have not been able to write a complete test, I have created a 'skeleton' test instead, describing what I would have liked to test had I had the knowledge to do so.
-
-Finally, to offset the fact that my program does not throw any errors, I have built the program in a way that ensures the user can only move through the game (create a plateau, deploy a rover, view results, etc.) if their input for each parameter is valid. Rather than throwing an RSpec error, the ```CLI module```, takes care of this, by telling the user what the correct input type is and then prompting the user to try again.
-
-For example:
-
-cli: ```Specify the top-right X coordinate. ``` user input: ```ajkbk```
-
-cli: ```>> Must be a number greater than 0```
-
 ## Instructions
 
 To run the program you can either unzip the provided file or clone this repo to your local machine.

@@ -3,17 +3,12 @@ require 'mission_control.rb'
 
 describe MissionControl do
 
+  let(:mission) { MissionControl.new }
+
   describe "#begin" do
-    it "should prompt user to make a choice on whether to explore Mars or not" do
-      expect()
-    end
     context "when choice is yes" do
-      it "should receive user input and assign it to the x_coord variable" do
-        expect()
-      end
-      it "should receive user input and assign it to the y_coord variable" do
-        expect()
-      end
+      x_coord = "5"
+      y_coord = "5"
       it "should create a new instance, @initialized_plateau, of the Plateau class based on the user's input" do
         expect()
       end
@@ -23,30 +18,33 @@ describe MissionControl do
       it "should call the display_grid method on @initialized_plateau" do
         expect()
       end
+      it "should call the get_input method" do
+        expect()
+      end
     end
     context "when choice is no" do
-      it "should end the current session" do
+      it "should call on goodbye method" do
         expect()
       end
     end
   end
 
   describe "#get_input" do
-    it "should should receive user input and assign it to @starting_x_coord" do
-      expect()
-    end
-    it "should should receive user input and assign it to @starting_y_coord" do
-      expect()
-    end
-    it "should should receive user input and assign it to @direction" do
-      expect()
-    end
-    it "should should receive user input, upcase it, and assign it to @instructions" do
-      expect()
-    end
-    it "should call validate_instructions method" do
-      expect()
-    end
+    # it "should should receive user input and assign it to @starting_x_coord" do
+    #   expect()
+    # end
+    # it "should should receive user input and assign it to @starting_y_coord" do
+    #   expect()
+    # end
+    # it "should should receive user input and assign it to @direction" do
+    #   expect()
+    # end
+    # it "should should receive user input, upcase it, and assign it to @instructions" do
+    #   expect()
+    # end
+    # it "should call validate_instructions method" do
+    #   expect()
+    # end
   end
 
   describe "#validate_instructions" do
@@ -66,12 +64,6 @@ describe MissionControl do
   end
 
   describe "#deploy_rover" do
-    it "should create a new instance of the Rover class with the following variables: @starting_x_coord, @starting_y_coord, @direction, @instructions" do
-      expect()
-    end
-    it "should prompt user to make a choice on whether to deploy another rover or not" do
-      expect()
-    end
     context "when choice is yes" do
       it "should call the get_input method" do
         expect()
@@ -96,7 +88,7 @@ describe MissionControl do
     end
     it "should display the eventual position(s) of the rover(s) on the grid plateau" do
       expect()
-    end 
+    end
   end
 
 end
